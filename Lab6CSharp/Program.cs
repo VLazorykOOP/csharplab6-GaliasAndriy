@@ -1,58 +1,41 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab6 C# ");
-AnyFunc();
+﻿using System;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
+namespace Lab6CSharp;
+
+internal class Program
 {
-    Console.WriteLine(" Some function in top-level");
-}
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-User.UserClass cl2 = new();
-cl2.Name = " UserClass namespace User ";
-
-
-
-
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
-
-namespace User
-{
-    class UserClass
+    static void Main(string[] args)
     {
-        public string Name { get; set; }
-        public UserClass()
+        Console.WriteLine("Lab6 C# ");
+        Console.WriteLine("-----------------------------------------------");
+        Console.WriteLine("1. Final exams. Refactored");
+        Console.WriteLine("2. Goods. Interface");
+        Console.WriteLine("-----------------------------------------------");
+
+
+        try
         {
-            Name = "NoName";
+            Console.Write("Choose a task : ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("");
+            switch (choice)
+            {
+                case 1:
+                    TasksUsage.Task1();
+                    Console.WriteLine("");
+                    break;
+                case 2:
+                    TasksUsage.Task2();
+                    Console.WriteLine("");
+                    break;
+                default:
+                    Console.WriteLine("Task not found.");
+                    break;
+            }
         }
-        UserClass(string n)
+        catch (Exception e)
         {
-            Name = n;
+            Console.WriteLine("Error: " + e.Message);
         }
     }
-
-}
-class UserClass
-{
-    public string Name { get; set; }
 }
